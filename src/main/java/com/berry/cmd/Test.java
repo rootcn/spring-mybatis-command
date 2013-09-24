@@ -53,9 +53,9 @@ public class Test {
 	public static void t2(BeanFactory factory) {
 		PersonBo personBo = (PersonBo) factory.getBean("personBo");
 		
-		//personBo.remove(1);
+		personBo.remove(1);
 		
-		personBo.addTestTx();
+		//personBo.addTestTx();
 	}
 
 }

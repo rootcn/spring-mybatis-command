@@ -3,6 +3,8 @@
  */
 package com.berry.cmd.bo;
 
+import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +20,11 @@ import com.berry.cmd.service.PersonService;
  */
 @Component
 public class PersonBo {
-	Logger log = LoggerFactory.getLogger(PersonBo.class);
+	private Logger logger = LoggerFactory.getLogger(PersonBo.class);
 	
-	@Autowired
-	@Qualifier("personServiceImpl")
+	//@Autowired
+	//@Qualifier("personServiceImpl")
+	@Resource(name="personServiceImpl")
 	private PersonService personService;
 
 	public void add(Integer id, String name) {
@@ -29,6 +32,8 @@ public class PersonBo {
 		p.setKeyId(1);
 		p.setName("测试姓名");
 		personService.create(p);
+		
+		logger.debug("added");
 	}
 	
 	public void update(Integer id, String name) {
@@ -36,16 +41,20 @@ public class PersonBo {
 		p.setKeyId(1);
 		p.setName("测试姓名");
 		personService.update(p);
+		
+		logger.debug("updated");
 	}
 	
 	public void remove(Integer id) {
 		personService.remove(id);
+		
+		logger.debug("removed");
 	}
 	
 	public void addTestTx() {
 		personService.remove(1);
 		
-		log.debug("remove 1");
+		logger.debug("remove 1");
 		
 		Person p = new Person();
 		p.setKeyId(1);
@@ -55,12 +64,12 @@ public class PersonBo {
 			throw new RuntimeException("xxx");
 		}
 		Person p2 = personService.getById(1);
-		log.debug(p2.getName());
+		logger.debug(p2.getName());
 		
 		p.setName("姓名2");
 		personService.update(p);
 
 		Person p3 = personService.getById(1);
-		log.debug(p3.getName());
+		logger.debug(p3.getName());
 	}
 }
