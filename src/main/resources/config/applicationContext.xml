@@ -39,6 +39,7 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
+	<!-- need transaction methods -->
 	<bean id="transactionInterceptor"
 		class="org.springframework.transaction.interceptor.TransactionInterceptor">
 		<property name="transactionManager" ref="transactionManager" />
@@ -66,11 +67,13 @@
 		</property>
 	</bean>
 
+	<!-- need transaction beans -->
 	<bean
 		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
 		<property name="beanNames">
 			<list>
 				<value>*ServiceImpl</value>
+				<value>*Bo</value>
 			</list>
 		</property>
 		<property name="interceptorNames">
