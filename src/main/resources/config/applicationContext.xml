@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+	default-lazy-init="true" default-autowire="byName">
+
+	<context:component-scan base-package="com.berry" />
+	
+	<util:properties id="jdbcProp" location="classpath:/jdbc.properties" />
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="#{jdbcProp['jdbc.driverClassName']}" />
+		<property name="jdbcUrl" value="#{jdbcProp['jdbc.url']}" />
+		<property name="user" value="#{jdbcProp['jdbc.username']}" />
+		<property name="password" value="#{jdbcProp['jdbc.password']}" />
+		<property name="minPoolSize">
+			<value>1</value>
+		</property>
+		<property name="maxPoolSize" value="50" />
+		<property name="initialPoolSize" value="3" />
+		<property name="maxIdleTime" value="60" />
+		<property name="acquireIncrement" value="5" />
+		<property name="maxStatements" value="0" />
+		<property name="idleConnectionTestPeriod" value="60" />
+		<property name="acquireRetryAttempts" value="30" />
+		<property name="breakAfterAcquireFailure" value="false" />
+		<property name="testConnectionOnCheckout" value="false" />
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="transactionInterceptor"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="save*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="add*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="create*">
+					PROPAGATION_REQUIRED,-Exception
+				</prop>
+				<prop key="del*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="remove*">
+					PROPAGATION_REQUIRED,-Exception
+				</prop>
+				<prop key="update*">
+					PROPAGATION_REQUIRED,-Exception
+				</prop>
+				<prop key="edit*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="find*">PROPAGATION_SUPPORTS,readOnly</prop>
+				<prop key="move*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="modify*">
+					PROPAGATION_REQUIRED,-Exception
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<list>
+				<value>*ServiceImpl</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:config/mybatis.xml" />
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<bean name="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.berry.cmd" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
+</beans>

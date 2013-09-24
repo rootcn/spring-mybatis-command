@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.berry.cmd.dao.PersonDAO">
+
+	<insert id="create" parameterType="com.berry.cmd.po.Person">
+		INSERT INTO person
+		(keyId, name)
+		VALUES
+		(#{keyId}, #{name})
+	</insert>
+
+	<update id="update" parameterType="com.berry.cmd.po.Person">
+		UPDATE person SET
+		name = #{name}
+		WHERE keyId = #{keyId}
+	</update>
+	
+	<delete id="remove" parameterType="Integer">
+		delete from person where keyId = #{keyId}
+	</delete>
+
+	<select id="getById" parameterType="Integer" resultType="com.berry.cmd.po.Person">
+		SELECT
+		* from person where keyId=#{keyId}
+	</select>
+</mapper>
