@@ -17,19 +17,19 @@
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
 
-		<javaModelGenerator targetPackage="com.berry.mc.po"
+		<javaModelGenerator targetPackage="com.berry.cmd.po"
 			targetProject="target/generator/src/main/java">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 
-		<sqlMapGenerator targetPackage="com.berry.mc.dao"
+		<sqlMapGenerator targetPackage="com.berry.cmd.dao"
 			targetProject="target/generator/src/main/resources">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.berry.mc.dao" targetProject="target/generator/src/main/java">
+			targetPackage="com.berry.cmd.dao" targetProject="target/generator/src/main/java">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 
