@@ -59,6 +59,8 @@
 				</prop>
 				<prop key="edit*">PROPAGATION_REQUIRED,-Exception</prop>
 				<prop key="find*">PROPAGATION_SUPPORTS,readOnly</prop>
+				<prop key="select*">PROPAGATION_SUPPORTS,readOnly</prop>
+				<prop key="get*">PROPAGATION_SUPPORTS,readOnly</prop>
 				<prop key="move*">PROPAGATION_REQUIRED,-Exception</prop>
 				<prop key="modify*">
 					PROPAGATION_REQUIRED,-Exception
