@@ -23,3 +23,13 @@ pub_date  date NULL ,
 PRIMARY KEY (keyId)
 )
 ;
+
+
+CREATE TABLE pen (
+keyId  int NOT NULL ,
+name  varchar(100) NULL ,
+factory  varchar(100) NULL ,
+manu_date  date NULL ,
+PRIMARY KEY (keyId)
+)
+;
