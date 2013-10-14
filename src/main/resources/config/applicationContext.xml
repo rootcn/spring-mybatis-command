@@ -45,26 +45,18 @@
 		<property name="transactionManager" ref="transactionManager" />
 		<property name="transactionAttributes">
 			<props>
-				<prop key="save*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="insert*">PROPAGATION_REQUIRED,-Exception</prop>
 				<prop key="add*">PROPAGATION_REQUIRED,-Exception</prop>
-				<prop key="create*">
-					PROPAGATION_REQUIRED,-Exception
-				</prop>
-				<prop key="del*">PROPAGATION_REQUIRED,-Exception</prop>
-				<prop key="remove*">
-					PROPAGATION_REQUIRED,-Exception
-				</prop>
-				<prop key="update*">
-					PROPAGATION_REQUIRED,-Exception
-				</prop>
+				<prop key="create*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="update*">PROPAGATION_REQUIRED,-Exception</prop>
 				<prop key="edit*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="modify*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="save*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="delete*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="remove*">PROPAGATION_REQUIRED,-Exception</prop>
 				<prop key="find*">PROPAGATION_SUPPORTS,readOnly</prop>
 				<prop key="select*">PROPAGATION_SUPPORTS,readOnly</prop>
 				<prop key="get*">PROPAGATION_SUPPORTS,readOnly</prop>
-				<prop key="move*">PROPAGATION_REQUIRED,-Exception</prop>
-				<prop key="modify*">
-					PROPAGATION_REQUIRED,-Exception
-				</prop>
 			</props>
 		</property>
 	</bean>
