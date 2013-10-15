@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly>
+	<id>manager-assembly</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+	<includeBaseDirectory>true</includeBaseDirectory>
+	<files>
+		<file>
+			<source>README.md</source>
+			<outputDirectory>/</outputDirectory>
+		</file>
+		<file>
+			<source>smc.bat</source>
+			<outputDirectory>/</outputDirectory>
+		</file>
+		<file>
+			<source>smc.sh</source>
+			<outputDirectory>/</outputDirectory>
+		</file>
+		<!--  <file>
+			<source>target/${artifactId}-${version}.${packaging}</source>
+			<outputDirectory>/lib</outputDirectory>
+		</file>-->
+	</files>
+	<!-- 
+	<fileSets>
+		<fileSet>
+			<directory>target/classes</directory>
+			<outputDirectory>/classes</outputDirectory>
+		</fileSet>
+	</fileSets> -->
+	<dependencySets>
+		<dependencySet>
+			<outputDirectory>lib</outputDirectory>
+			<scope>runtime</scope>
+		</dependencySet>
+	</dependencySets>
+</assembly>  
