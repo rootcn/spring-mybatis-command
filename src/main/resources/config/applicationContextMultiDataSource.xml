@@ -121,7 +121,7 @@
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 
-	<bean name="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	<bean name="mapperScannerConfigurer2" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.berry.cmd.dao.second" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory2" />
 	</bean>
