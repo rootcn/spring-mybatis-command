@@ -1,0 +1,54 @@
+<project name="sping-mybatis-command" default="compile">
+	<!-- some variables used -->
+	<property name="project.name" value="${ant.project.name}" />
+	<property name="project.version" value="0.0.1-SNAPSHOT" />
+	<property name="src.java.dir" value="src/main/java" />
+	<property name="src.resource.dir" value="src/main/resources" />
+	<property name="lib.dir" value="lib" />
+	<property name="target.dir" value="target" />
+	<property name="target.classes.dir" value="${target.dir}/classes" />
+	<property name="target.name" value="${project.name}-${project.version}" />
+	<property name="target.jar" location="${target.dir}/${target.name}.jar" />
+	<property name="target.zip" location="${target.dir}/${target.name}.zip" />
+	
+    <path id="lib.path.id">
+        <fileset dir="${lib.dir}" />
+	</path>
+
+	<!-- ================================= 
+          target: compile
+         ================================= -->
+	<target name="compile" description="--> compile the project">
+		<mkdir dir="${target.classes.dir}" />
+		<javac srcdir="${src.java.dir}" destdir="${target.classes.dir}" classpathref="lib.path.id" includeAntRuntime="false" />
+		<copy todir="${target.classes.dir}">
+			<fileset dir="${src.resource.dir}">
+				<include name="**/*" />
+				<exclude name="**/vssver2.scc" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- ================================= 
+          target: jar
+         ================================= -->
+	<target name="jar" depends="compile" description="--> jar classes">
+		<jar destfile="${target.jar}" duplicate="preserve" compress="true">
+			<fileset dir="${target.classes.dir}">
+				<exclude name="**/vssver2.scc" />
+			</fileset>
+		</jar>
+	</target>
+
+	<!-- ================================= 
+          target: package
+         ================================= -->
+	<target name="package" depends="compile" description="--> zip the project">
+		<zip destfile="${target.zip}">
+			<zipfileset dir="${target.classes.dir}" prefix="classes" excludes="**/vssver2.scc" />
+			<zipfileset dir="${lib.dir}" prefix="lib" excludes="**/vssver2.scc" />
+			<fileset dir="." file="smc.bat" />
+			<fileset dir="." file="smc.sh" />
+		</zip>
+	</target>
+</project>
