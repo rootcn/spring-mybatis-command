@@ -13,3 +13,17 @@ mvn clean compile assembly:single
 
 zip project
 mvn clean assembly:assembly
+
+
+------------------
+run on windows 
+smc.bat
+
+run on linux
+chmod +x smc.sh
+./smc.sh
+
+ps -ef | grep com.berry
+kill -s 9 NNNN
+
+rm -rf FFFF

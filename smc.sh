@@ -1,2 +1,1 @@
-@echo off
-java -cp ".:lib/*" -server com.berry.cmd.Test
+nohup java -cp ".:lib/*" -server com.berry.cmd.Test >log/nohup.log &
