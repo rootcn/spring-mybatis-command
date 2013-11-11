@@ -13,6 +13,7 @@
 	<context:component-scan base-package="com.berry" />
 	
 	<util:properties id="jdbcProp" location="classpath:/jdbc.properties" />
+	<util:properties id="smcProp" location="classpath:/smc.properties" />
 
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">

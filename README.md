@@ -3,6 +3,7 @@ spring-mybatis-command
 
 Spring 3.2 + MyBatis 3.2 command line app.
 
+use socket to stop program.
 
 ------------
 mvn dependency:copy-dependencies -DoutputDirectory=target/lib
@@ -16,12 +17,21 @@ mvn clean assembly:assembly
 
 
 ------------------
-run on windows 
-smc.bat
+run
+on windows 
+startup.bat
 
-run on linux
-chmod +x smc.sh
-./smc.sh
+on linux
+chmod +x startup.sh
+./startup.sh
+
+shutdown
+on windows
+shutdown.bat
+
+on linux
+chmod +x shutdown.sh
+shutdown.sh
 
 ps -ef | grep com.berry
 kill -s 9 NNNN

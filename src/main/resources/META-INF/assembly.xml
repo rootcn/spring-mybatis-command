@@ -11,11 +11,19 @@
 			<outputDirectory>/</outputDirectory>
 		</file>
 		<file>
-			<source>smc.bat</source>
+			<source>startup.bat</source>
 			<outputDirectory>/</outputDirectory>
 		</file>
 		<file>
-			<source>smc.sh</source>
+			<source>startup.sh</source>
+			<outputDirectory>/</outputDirectory>
+		</file>
+		<file>
+			<source>shutdown.bat</source>
+			<outputDirectory>/</outputDirectory>
+		</file>
+		<file>
+			<source>shutdown.sh</source>
 			<outputDirectory>/</outputDirectory>
 		</file>
 		<!--  <file>

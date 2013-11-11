@@ -18,9 +18,13 @@ public class Test {
 				new String[] { "config/applicationContext.xml" });
 		BeanFactory factory = resource;
 
+		String command = System.getProperty("command");
+
+		SmcSocket smcSocket = (SmcSocket) factory.getBean("smcSocket");
+		smcSocket.command(command);
 		// t1(factory);
 
-		t2(factory);
+		//t2(factory);
 
 		resource.close();
 	}
