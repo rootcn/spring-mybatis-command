@@ -39,37 +39,4 @@ public class Test {
 		resource.close();
 	}
 
-	public static void t1(BeanFactory factory) {
-		PersonService personService = (PersonService) factory
-				.getBean("personServiceImpl");
-
-		personService.remove(1);
-
-		log.debug("remove 1");
-
-		Person p = new Person();
-		p.setKeyId(1);
-		p.setName("测试姓名");
-		personService.create(p);
-		// if (true) {
-		// throw new RuntimeException("xxx");
-		// }
-		Person p2 = personService.getById(1);
-		log.debug(p2.getName());
-
-		p.setName("姓名2");
-		personService.update(p);
-
-		Person p3 = personService.getById(1);
-		log.debug(p3.getName());
-	}
-
-	public static void t2(BeanFactory factory) {
-		PersonBo personBo = (PersonBo) factory.getBean("personBo");
-		
-		personBo.remove(1);
-		
-		//personBo.addTestTx();
-	}
-
 }
