@@ -25,6 +25,16 @@ public class Test {
 		// t1(factory);
 
 		//t2(factory);
+		PersonTest personTest = (PersonTest) factory.getBean("personTest");
+		
+		Person p1 = personTest.getPerson(1);
+		
+		if (p1 == null) {
+			personTest.addPerson(1, "姓名1");
+		} else {
+			personTest.updatePerson(1, "姓名2");
+		}
+		personTest.removePerson(1);
 
 		resource.close();
 	}

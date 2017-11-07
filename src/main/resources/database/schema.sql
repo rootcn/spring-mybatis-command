@@ -1,3 +1,10 @@
+CREATE DATABASE test
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    CONNECTION LIMIT = -1;
+    
+    
 CREATE TABLE person (
 keyId  int NOT NULL ,
 name  varchar(100) NULL ,
@@ -30,6 +37,21 @@ keyId  int NOT NULL ,
 name  varchar(100) NULL ,
 factory  varchar(100) NULL ,
 manu_date  date NULL ,
+PRIMARY KEY (keyId)
+)
+;
+
+-----------------------
+
+CREATE DATABASE test2
+WITH 
+OWNER = postgres
+ENCODING = 'UTF8'
+CONNECTION LIMIT = -1;
+
+CREATE TABLE person2 (
+keyId  int NOT NULL ,
+name  varchar(100) NULL ,
 PRIMARY KEY (keyId)
 )
 ;

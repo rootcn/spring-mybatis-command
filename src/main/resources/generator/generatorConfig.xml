@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
 	<classPathEntry
-		location="C:/Documents and Settings/berry/.m2/repository/org/postgresql/postgresql/9.2-1003-jdbc4/postgresql-9.2-1003-jdbc4.jar" />
+		location="D:/repository/org/postgresql/postgresql/42.1.4/postgresql-42.1.4.jar" />
 
 	<context id="PostgresTables" targetRuntime="MyBatis3">
 		<jdbcConnection driverClass="org.postgresql.Driver"
