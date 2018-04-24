@@ -21,6 +21,12 @@ can_arrive  integer NULL ,
 PRIMARY KEY (keyId)
 )
 ;
+COMMENT ON TABLE world  IS '世界';
+COMMENT ON COLUMN world.keyid IS '关键字';
+COMMENT ON COLUMN world.name IS '姓名';
+COMMENT ON COLUMN world.birthday IS '生日';
+COMMENT ON COLUMN world.width IS '宽度';
+COMMENT ON COLUMN world.can_arrive IS '是否可达';
 
 CREATE TABLE music (
 keyId  int NOT NULL ,
@@ -30,6 +36,11 @@ pub_date  date NULL ,
 PRIMARY KEY (keyId)
 )
 ;
+COMMENT ON TABLE music  IS '音乐';
+COMMENT ON COLUMN music.keyid IS '主键';
+COMMENT ON COLUMN music.name IS '名称';
+COMMENT ON COLUMN music.author IS '作者';
+COMMENT ON COLUMN music.pub_date IS '发行时间';
 
 
 CREATE TABLE pen (

@@ -4,8 +4,7 @@
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-	<classPathEntry
-		location="D:/dev/rep/maven3/repository/org/postgresql/postgresql/42.1.4/postgresql-42.1.4.jar" />
+    <properties resource="jdbc.properties"/>
 
 	<context id="PostgresTables" targetRuntime="MyBatis3">
 		<commentGenerator>
@@ -14,9 +13,9 @@
 			<!-- <property name="suppressAllComments" value="true" /> -->
 		</commentGenerator>
 
-		<jdbcConnection driverClass="org.postgresql.Driver"
-			connectionURL="jdbc:postgresql://localhost/test" userId="postgres"
-			password="1">
+		<jdbcConnection driverClass="${jdbc.driverClassName}"
+			connectionURL="${jdbc.url}" userId="${jdbc.username}"
+			password="${jdbc.password}">
 		</jdbcConnection>
 
 		<javaTypeResolver>

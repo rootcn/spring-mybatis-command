@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.berry.cmd.dao.WorldMapper">
+  <resultMap id="BaseResultMap" type="com.berry.cmd.po.World">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="keyid" jdbcType="INTEGER" property="keyid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="width" jdbcType="INTEGER" property="width" />
+    <result column="can_arrive" jdbcType="INTEGER" property="can_arrive" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    keyid, name, birthday, width, can_arrive
+  </sql>
+</mapper>

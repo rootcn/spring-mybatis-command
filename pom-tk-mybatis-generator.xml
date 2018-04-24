@@ -24,6 +24,7 @@
 		<postgre.jdbc.driver.version>42.1.4</postgre.jdbc.driver.version>
 		<commons-lang3.version>3.6</commons-lang3.version>
 		<joda-time.version>2.9.9</joda-time.version>
+        <mapper.version>4.0.0</mapper.version>
 	</properties>
 
 	<dependencies>
@@ -147,7 +148,7 @@
 				<artifactId>mybatis-generator-maven-plugin</artifactId>
 				<version>${mybatis-generator.version}</version>
                 <configuration>
-                    <configurationFile>${basedir}/src/main/resources/generator/generatorConfig-maven.xml</configurationFile>
+                    <configurationFile>${basedir}/src/main/resources/generator/generatorConfig-maven-tk.xml</configurationFile>
                     <overwrite>true</overwrite>
                     <verbose>true</verbose>
                 </configuration>
@@ -165,6 +166,11 @@
 						<artifactId>postgresql</artifactId>
 						<version>${postgre.jdbc.driver.version}</version>
 					</dependency>
+                    <dependency>
+                        <groupId>tk.mybatis</groupId>
+                        <artifactId>mapper</artifactId>
+                        <version>${mapper.version}</version>
+                    </dependency>
 				</dependencies>
 			</plugin>
 		</plugins>

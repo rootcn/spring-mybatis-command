@@ -4,19 +4,25 @@
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-	<classPathEntry
-		location="D:/dev/rep/maven3/repository/org/postgresql/postgresql/42.1.4/postgresql-42.1.4.jar" />
+	<properties resource="jdbc.properties" />
 
 	<context id="PostgresTables" targetRuntime="MyBatis3">
+		<!-- <property name="beginningDelimiter" value="`"/> -->
+		<!-- <property name="endingDelimiter" value="`"/> -->
+
+		<plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+			<property name="mappers" value="tk.mybatis.mapper.common.Mapper" />
+			<property name="caseSensitive" value="true" />
+		</plugin>
+
 		<commentGenerator>
 			<!-- <property name="suppressDate" value="false" /> -->
 			<property name="addRemarkComments" value="true" />
 			<!-- <property name="suppressAllComments" value="true" /> -->
 		</commentGenerator>
 
-		<jdbcConnection driverClass="org.postgresql.Driver"
-			connectionURL="jdbc:postgresql://localhost/test" userId="postgres"
-			password="1">
+		<jdbcConnection driverClass="${jdbc.driverClassName}"
+			connectionURL="${jdbc.url}" userId="${jdbc.username}" password="${jdbc.password}">
 		</jdbcConnection>
 
 		<javaTypeResolver>
@@ -24,18 +30,18 @@
 		</javaTypeResolver>
 
 		<javaModelGenerator targetPackage="com.berry.cmd.po"
-			targetProject="generator/src/main/java">
+			targetProject="generator-tk/src/main/java">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 
 		<sqlMapGenerator targetPackage="com.berry.cmd.dao"
-			targetProject="generator/src/main/resources">
+			targetProject="generator-tk/src/main/resources">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.berry.cmd.dao" targetProject="generator/src/main/java">
+			targetPackage="com.berry.cmd.dao" targetProject="generator-tk/src/main/java">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 

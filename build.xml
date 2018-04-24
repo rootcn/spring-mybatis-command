@@ -10,6 +10,7 @@
 	<property name="target.name" value="${project.name}-${project.version}" />
 	<property name="target.jar" location="${target.dir}/${target.name}.jar" />
 	<property name="target.zip" location="${target.dir}/${target.name}.zip" />
+    <property name="generated.source.dir" value="${basedir}" />
 	
     <path id="lib.path.id">
         <fileset dir="${lib.dir}" />
@@ -51,4 +52,18 @@
 			<fileset dir="." file="smc.sh" />
 		</zip>
 	</target>
+
+	<!-- ================================= 
+          target: genfiles
+         ================================= -->
+    <target name="genfiles" description="Generate the files">
+      <taskdef name="mbgenerator"
+               classname="org.mybatis.generator.ant.GeneratorAntTask"
+               classpath="D:/dev/rep/maven3/repository/org/mybatis/generator/mybatis-generator-core/1.3.6/mybatis-generator-core-1.3.6.jar" />
+      <mbgenerator overwrite="true" configfile="src/main/resources/generator/generatorConfig.xml" verbose="false" >
+        <propertyset>
+          <propertyref name="generated.source.dir"/>
+        </propertyset>
+      </mbgenerator>
+    </target>
 </project>
