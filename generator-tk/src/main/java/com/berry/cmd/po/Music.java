@@ -1,10 +1,11 @@
 package com.berry.cmd.po;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "music")
-public class Music {
+public class Music implements Serializable {
     /**
      * 主键
      */
@@ -27,6 +28,8 @@ public class Music {
      */
     @Column(name = "pub_date")
     private Date pubDate;
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * 获取主键
@@ -98,5 +101,49 @@ public class Music {
      */
     public void setPubDate(Date pubDate) {
         this.pubDate = pubDate;
+    }
+
+    @Override
+    public boolean equals(Object that) {
+        if (this == that) {
+            return true;
+        }
+        if (that == null) {
+            return false;
+        }
+        if (getClass() != that.getClass()) {
+            return false;
+        }
+        Music other = (Music) that;
+        return (this.getKeyid() == null ? other.getKeyid() == null : this.getKeyid().equals(other.getKeyid()))
+            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
+            && (this.getAuthor() == null ? other.getAuthor() == null : this.getAuthor().equals(other.getAuthor()))
+            && (this.getPubDate() == null ? other.getPubDate() == null : this.getPubDate().equals(other.getPubDate()));
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((getKeyid() == null) ? 0 : getKeyid().hashCode());
+        result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
+        result = prime * result + ((getAuthor() == null) ? 0 : getAuthor().hashCode());
+        result = prime * result + ((getPubDate() == null) ? 0 : getPubDate().hashCode());
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", keyid=").append(keyid);
+        sb.append(", name=").append(name);
+        sb.append(", author=").append(author);
+        sb.append(", pubDate=").append(pubDate);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }

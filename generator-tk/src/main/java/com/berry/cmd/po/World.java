@@ -1,10 +1,11 @@
 package com.berry.cmd.po;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "world")
-public class World {
+public class World implements Serializable {
     /**
      * 关键字
      */
@@ -31,6 +32,8 @@ public class World {
      * 是否可达
      */
     private Integer can_arrive;
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * 获取关键字
@@ -120,5 +123,52 @@ public class World {
      */
     public void setCan_arrive(Integer can_arrive) {
         this.can_arrive = can_arrive;
+    }
+
+    @Override
+    public boolean equals(Object that) {
+        if (this == that) {
+            return true;
+        }
+        if (that == null) {
+            return false;
+        }
+        if (getClass() != that.getClass()) {
+            return false;
+        }
+        World other = (World) that;
+        return (this.getKeyid() == null ? other.getKeyid() == null : this.getKeyid().equals(other.getKeyid()))
+            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
+            && (this.getBirthday() == null ? other.getBirthday() == null : this.getBirthday().equals(other.getBirthday()))
+            && (this.getWidth() == null ? other.getWidth() == null : this.getWidth().equals(other.getWidth()))
+            && (this.getCan_arrive() == null ? other.getCan_arrive() == null : this.getCan_arrive().equals(other.getCan_arrive()));
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((getKeyid() == null) ? 0 : getKeyid().hashCode());
+        result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
+        result = prime * result + ((getBirthday() == null) ? 0 : getBirthday().hashCode());
+        result = prime * result + ((getWidth() == null) ? 0 : getWidth().hashCode());
+        result = prime * result + ((getCan_arrive() == null) ? 0 : getCan_arrive().hashCode());
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", keyid=").append(keyid);
+        sb.append(", name=").append(name);
+        sb.append(", birthday=").append(birthday);
+        sb.append(", width=").append(width);
+        sb.append(", can_arrive=").append(can_arrive);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }
