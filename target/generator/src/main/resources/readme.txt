@@ -1,1 +1,0 @@
-mapper configuration file.
